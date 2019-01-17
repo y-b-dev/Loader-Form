@@ -1,33 +1,63 @@
 <form #f="ngForm" novalidate>
-  <div class="balance-box disp-in-bl col-3 center-txt">
-    <span (click)="genRandMainBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
-    <span>Main Balance</span>
-    <div class="balance-input">
-      <input [disabled]="isNoFunds" [(ngModel)]="mainBalance" name="mainBalance" OnlyNumber="true" type="text">
+  <div class="balance-control center-box">
+
+    <div class="balance-box disp-in-bl center-txt">
+      <span (click)="genRandBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+      <label for="mainBalInput">Main Balance</label>
+      <div class="balance-input-box">
+        <input class="balance-input" id="mainBalInput" [disabled]="isNoFunds" [(ngModel)]="data.mainBalance" name="mainBalance"
+          OnlyNumber="true" type="text" [ngClass]="isDesktop ? 'input-desk' : 'input-mob'">
+      </div>
     </div>
-  </div>
 
-  <div class="transfer-box disp-in-bl col-3 e-icons e-search center-txt">
+    <div class="transfer-box disp-in-bl e-icons e-search center-txt"></div>
 
-  </div>
-
-  <div class="balance-box disp-in-bl col-3 center-txt">
-    <span (click)="genRandGameBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
-    <span>Game Balance</span>
-    <div class="balance-input">
-      <input [disabled]="isNoFunds" [(ngModel)]="gameBalance" name="gameBalance" OnlyNumber="true" type="text">
+    <div class="balance-box disp-in-bl center-txt">
+      <span (click)="genRandBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+      <label for="gameBalInput">Game Balance</label>
+      <div class="balance-input-box">
+        <input class="balance-input" id="gameBalInput" [disabled]="isNoFunds" [(ngModel)]="data.gameBalance" name="gameBalance"
+          OnlyNumber="true" type="text" [ngClass]="isDesktop ? 'input-desk' : 'input-mob'">
+      </div>
     </div>
-  </div>
 
-  <div id='container'>
-    <div class='wrap'>
-      <ejs-slider [(value)]="sliderVal" name="sliderVal" id="slider" [min]="0" [max]="maxVal" [showButtons]="true"
-        (change)="onSliderChange($event)"></ejs-slider>
+    <div class="slider-wrapper center-box">
+      <ejs-slider [enabled]="!isNoFunds" [(value)]="sliderVal" name="sliderVal" id="slider" [min]="0" [max]="maxVal"
+        [showButtons]="true" (change)="onSliderChange($event)"></ejs-slider>
     </div>
+
   </div>
 
   <div class="center-txt">
-    <button [disabled]="isNoGameBalance" class="btn">Launch Game</button>
+    <button type="button" [ngClass]="(isNoGameBalance || isNoFunds) ? 'btn-default btn-disabled' : 'btn-active add-cursor'"
+      (click)="gameLaunch()" [disabled]="isNoGameBalance" class="btn">Launch Game</button>
   </div>
-  <hr>
+  <div style="padding: 26px 0 10px 0;" *ngIf="!isDesktop && !isNoFunds">
+    <hr>
+  </div>
+
+  <ng-container *ngIf="isNoFunds; then disabled; else enabled"></ng-container>
+
+  <ng-template #disabled>
+    <div class="fix-bottom center-txt">
+      <article class="red center-txt">
+        Oops, it seems you have no funds
+        available to play with. Press the
+        button below to visit our Cashier
+      </article>
+      <button type="button" class="btn btn-active add-cursor" (click)="gameDeposit()">Deposit</button>
+    </div>
+  </ng-template>
+
+  <ng-template #enabled>
+    <div class="fix-bottom center-txt">
+      <article class="center-txt">
+        You can also transfer funds without
+        launching the game, e.g. wins or remaining
+        funds back to your main balance
+      </article>
+      <button type="button" class="btn btn-default" [ngClass]="isNoGameBalance ? 'btn-disabled' : 'add-cursor'" (click)="gameTransferFunds()"
+        [disabled]="(isNoGameBalance || isNoFunds)">Transfer Funds</button>
+    </div>
+  </ng-template>
 </form>

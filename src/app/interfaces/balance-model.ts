@@ -1,5 +1,5 @@
 export interface BalanceModel {
-  currency: string;
+  currency?: string;
   mainBalance: number;
   gameBalance: number;
 }

@@ -1,13 +1,9 @@
 .balance-box {
-
+  width: 40%;
 }
 
 .transfer-box {
-
-}
-
-.col-3 {
-  width: 33%;
+  width: 20%;
 }
 
 .disp-in-bl {
@@ -18,7 +14,7 @@
   cursor: pointer;
 }
 
-.balance-box > .e-search:before{
+.balance-box > .e-search:before {
   content:'\e99d';
   font-size: 12px;
 }
@@ -28,4 +24,62 @@
   font-size: 35px;
 }
 
-/* e359 */
+.fix-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 2%;
+  width: 100%;
+}
+
+.btn {
+  padding: .3px 9px;
+  margin-top: 1.5%;
+  font-size: 1.4rem;
+  color: black;
+  font-weight: 549; 
+  box-shadow: 3px 3.5px black;
+  border: 1px black solid;
+}
+
+.btn-default {
+  background-color: white;
+}
+
+.btn-active {
+  background-color: #91aaff;
+}
+
+.btn-disabled {
+  opacity: .5;
+}
+
+.red {
+  color: red;
+}
+
+.balance-input {
+  text-align: right;
+  margin-top: 5px; 
+  border: none;
+  padding: 5px 4px;
+  background-color: #ededed;
+}
+
+.input-desk {
+  width: 7rem;
+  font-size: 1.7rem;
+}
+
+.input-mob {
+  width: 4rem;
+  font-size: 1.3rem;
+}
+
+.slider-wrapper {
+  width: 68%;
+}
+
+.balance-control {
+  width: 70%;
+}
+
