@@ -1,0 +1,31 @@
+.balance-box {
+
+}
+
+.transfer-box {
+
+}
+
+.col-3 {
+  width: 33%;
+}
+
+.disp-in-bl {
+  display: inline-block;
+}
+
+.add-cursor {
+  cursor: pointer;
+}
+
+.balance-box > .e-search:before{
+  content:'\e99d';
+  font-size: 12px;
+}
+
+.e-search:before{
+  content: '\e359';
+  font-size: 35px;
+}
+
+/* e359 */

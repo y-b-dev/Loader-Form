@@ -1,0 +1,33 @@
+<form #f="ngForm" novalidate>
+  <div class="balance-box disp-in-bl col-3 center-txt">
+    <span (click)="genRandMainBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+    <span>Main Balance</span>
+    <div class="balance-input">
+      <input [disabled]="isNoFunds" [(ngModel)]="mainBalance" name="mainBalance" OnlyNumber="true" type="text">
+    </div>
+  </div>
+
+  <div class="transfer-box disp-in-bl col-3 e-icons e-search center-txt">
+
+  </div>
+
+  <div class="balance-box disp-in-bl col-3 center-txt">
+    <span (click)="genRandGameBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+    <span>Game Balance</span>
+    <div class="balance-input">
+      <input [disabled]="isNoFunds" [(ngModel)]="gameBalance" name="gameBalance" OnlyNumber="true" type="text">
+    </div>
+  </div>
+
+  <div id='container'>
+    <div class='wrap'>
+      <ejs-slider [(value)]="sliderVal" name="sliderVal" id="slider" [min]="0" [max]="maxVal" [showButtons]="true"
+        (change)="onSliderChange($event)"></ejs-slider>
+    </div>
+  </div>
+
+  <div class="center-txt">
+    <button [disabled]="isNoGameBalance" class="btn">Launch Game</button>
+  </div>
+  <hr>
+</form>
