@@ -7,5 +7,83 @@
             and once and once ready click <strong>Lanunch Game</strong> below.
         </section>
     </header>
-    <app-launcher-form style="position: relative"></app-launcher-form>
+
+    <form style="position: relative" #f="ngForm" novalidate>
+        <div class="balance-control center-box">
+
+            <div class="balance-box disp-in-bl">
+                <span (click)="genRandBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+                <label for="mainBalInput">Main Balance</label>
+                <div class="balance-input-box">
+                    <input class="balance-input" id="mainBalInput" [disabled]="isNoFunds" [(ngModel)]="data.mainBalance"
+                        name="mainBalance" OnlyNumber="true" type="text" [ngClass]="isDesktop ? 'input-desk' : 'input-mob'">
+                </div>
+            </div>
+
+            <div class="transfer-box disp-in-bl e-icons e-search center-txt"></div>
+
+            <div style="text-align: right" class="balance-box disp-in-bl">
+                <span (click)="genRandBal()" class="e-icons e-search add-cursor">&nbsp;&nbsp;&nbsp;</span>
+                <label for="gameBalInput">Game Balance</label>
+                <div class="balance-input-box">
+                    <input class="balance-input" id="gameBalInput" [disabled]="isNoFunds" [(ngModel)]="data.gameBalance"
+                        name="gameBalance" OnlyNumber="true" type="text" [ngClass]="isDesktop ? 'input-desk' : 'input-mob'">
+                </div>
+            </div>
+
+            <div class="center-txt" style="width: 100%; margin-top: 35px;">
+                <div class="left-slider-btn-wrapper disp-in-bl">
+                    <button (click)="moveAllToGameBalance()" role="button" [disabled]="data.gameBalance === 0 || isNoFunds"
+                        [class.btn-disabled]="data.gameBalance === 0 || isNoFunds" class="slider-btn slider-btn-left add-cursor disp-in-bl">
+                        <span class="e-icons e-search"></span>
+                    </button>
+                </div>
+                <div class="slider-wrapper disp-in-bl">
+                    <ejs-slider class="center-box" [type]="type" [enabled]="!isNoFunds" [(value)]="sliderVal" name="sliderVal"
+                        id="slider" [min]="0" [max]="maxVal" (change)="onSliderChange($event)"></ejs-slider>
+                </div>
+                <div class="right-slider-btn-wrapper disp-in-bl">
+                    <button (click)="moveAllToMainBalance()" role="button" [disabled]="data.gameBalance === maxVal || isNoFunds"
+                        [class.btn-disabled]="data.gameBalance === maxVal || isNoFunds" class="slider-btn slider-btn-right add-cursor">
+                        <span class="e-icons e-search"></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="center-txt">
+            <button type="button" [ngClass]="(isNoGameBalance || isNoFunds) ? 'btn-default btn-disabled' : 'btn-active add-cursor'"
+                (click)="gameLaunch()" [disabled]="isNoGameBalance" class="btn">Launch Game</button>
+        </div>
+        <div style="padding-top: 26px;" *ngIf="!isDesktop && !isNoFunds">
+            <hr>
+        </div>
+
+        <ng-container *ngIf="isNoFunds; then disabled; else enabled"></ng-container>
+
+        <ng-template #disabled>
+            <div class="fix-bottom center-txt">
+                <article class="red center-txt">
+                    Oops, it seems you have no funds
+                    available to play with. Press the
+                    button below to visit our Cashier
+                </article>
+                <button type="button" class="btn btn-active add-cursor" (click)="gameDeposit()">Deposit</button>
+            </div>
+        </ng-template>
+
+        <ng-template #enabled>
+            <div class="fix-bottom center-txt">
+                <article class="center-txt">
+                    You can also transfer funds without
+                    launching the game, e.g. wins or remaining
+                    funds back to your main balance
+                </article>
+                <button type="button" class="btn btn-default" [ngClass]="isNoGameBalance ? 'btn-disabled' : 'add-cursor'"
+                    (click)="gameTransferFunds()" [disabled]="(isNoGameBalance || isNoFunds)">Transfer Funds</button>
+            </div>
+        </ng-template>
+    </form>
+
 </main>

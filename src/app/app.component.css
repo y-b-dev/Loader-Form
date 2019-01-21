@@ -1,12 +1,159 @@
 main {
     padding: 2% 6% 0% 6%;
+
 }
 
 h1 {
     padding: 2% 0% 4% 0%;
-    font-size: 2rem;
+    font-size: 3em;
 }
 
 header {
     padding-bottom: 5%;
 }
+
+section {
+    font-size: 1.5em;
+}
+
+.balance-control {
+    width: 70%;
+  }
+
+.balance-box {
+    width: 45%;
+  }
+  
+  .transfer-box {
+    width: 10%;
+  }
+  
+  .disp-in-bl {
+    display: inline-block;
+  }
+  
+  .add-cursor {
+    cursor: pointer;
+  }
+  
+  .balance-box > .e-search:before {
+    content:'\e309';
+    font-size: 12px;
+  }
+  
+  .e-search:before{
+    content: '\e359';
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  .fix-bottom {
+    position: fixed;
+    left: 0;
+    bottom: 3%;
+    width: 100%;
+  }
+  
+  .btn {
+    padding: .3px 9px;
+    margin-top: 1.5%;
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 549; 
+    box-shadow: 3px 3.5px black;
+    border: 1px black solid;
+  }
+  
+  .btn-default {
+    background-color: white;
+  }
+  
+  .btn-active {
+    background-color: #91aaff;
+  }
+  
+  .btn-disabled {
+    opacity: .3;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  .balance-input {
+    text-align: right;
+    margin-top: 5px; 
+    border: none;
+    padding: 5px 4px;
+    background-color: #ededed;
+  }
+  
+  .input-desk {
+    width: 7rem;
+    font-size: 1.7rem;
+  }
+  
+  .input-mob {
+    width: 4rem;
+    font-size: 1.3rem;
+  }
+  
+  .slider-wrapper {
+    width: 90%;
+  }
+  
+  .slider-btn {
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    /* width: 2.5%; */
+  }
+
+  .left-slider-btn-wrapper {
+    width: 1.5%;
+    margin-right: 25px;
+  }
+
+  .right-slider-btn-wrapper {
+    width: 1.5%;
+    margin-left: 15px;
+  }
+  
+  .slider-btn-left {
+    padding: 4px 4.5px 2px 3.5px;
+  }
+  
+  .slider-btn-right {
+    padding: 4px 3.5px 1px 3.5px;
+  }
+  
+  .slider-btn-left > .e-search:before {
+    content:'\e921';
+    font-size: 15px;
+  }
+  
+  .slider-btn-right > .e-search:before {
+    content:'\e956';
+    font-size: 15px;
+  }
+  
+  .e-slider-track {
+    background: black !important;
+  }
+  
+  .e-control.e-slider .e-handle {
+    height: 25px;
+      width: 8px;
+      top: 4px;
+      border-radius: 15px;
+      background-color: black;
+  }
+
+  .e-control-wrapper.e-slider-container.e-horizontal {
+    /* height: 48px; */
+    width: 100%;
+  }
+  
+
+  

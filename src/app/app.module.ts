@@ -6,14 +6,12 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { SliderModule } from '@syncfusion/ej2-angular-inputs';
 
 import { AppComponent } from './app.component';
-import { LauncherFormComponent } from './launcher-form/launcher-form.component';
 import { OnlyNumber } from './only-numbers-directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LauncherFormComponent,
-    OnlyNumber
+    OnlyNumber,
   ],
   imports: [
     BrowserModule,
