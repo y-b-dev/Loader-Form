@@ -1,23 +1,17 @@
-main {
-    padding: 2% 6% 0% 6%;
-
+.center-box {
+  margin: 0 auto;
 }
 
-h1 {
-    padding: 2% 0% 4% 0%;
-    font-size: 3em;
+.center-txt {
+  text-align: center;
 }
 
-header {
-    padding-bottom: 5%;
-}
-
-section {
-    font-size: 1.5em;
+.row {
+  width: 100%;
 }
 
 .balance-control {
-    width: 70%;
+    width: 85%;
   }
 
 .balance-box {
@@ -38,26 +32,22 @@ section {
   
   .balance-box > .e-search:before {
     content:'\e309';
-    font-size: 12px;
   }
   
   .e-search:before{
     content: '\e359';
-    font-size: 35px;
-    font-weight: 600;
   }
   
   .fix-bottom {
     position: fixed;
     left: 0;
-    bottom: 3%;
     width: 100%;
   }
   
   .btn {
     padding: .3px 9px;
-    margin-top: 1.5%;
-    font-size: 1.4rem;
+    margin: 3% 0;
+    font-size: 1.4em;
     color: black;
     font-weight: 549; 
     box-shadow: 3px 3.5px black;
@@ -74,32 +64,33 @@ section {
   
   .btn-disabled {
     opacity: .3;
+    cursor: not-allowed;
+    pointer-events: none;
   }
   
-  .red {
+  .err-msg {
     color: red;
+    font-weight: bold;
   }
   
   .balance-input {
     text-align: right;
-    margin-top: 5px; 
     border: none;
-    padding: 5px 4px;
     background-color: #ededed;
   }
   
   .input-desk {
-    width: 7rem;
+    width: 6em;
     font-size: 1.7rem;
   }
   
   .input-mob {
-    width: 4rem;
+    width: 5.5em;
     font-size: 1.3rem;
   }
   
   .slider-wrapper {
-    width: 90%;
+    width: 80%;
   }
   
   .slider-btn {
@@ -107,35 +98,38 @@ section {
     color: white;
     border-radius: 50px;
     border: none;
-    /* width: 2.5%; */
   }
 
-  .left-slider-btn-wrapper {
-    width: 1.5%;
-    margin-right: 25px;
+ /* .left-slider-btn-wrapper {
+    padding-right: 10px;
+    width: 10%;
   }
 
   .right-slider-btn-wrapper {
-    width: 1.5%;
-    margin-left: 15px;
+    padding-left: 10px;
+    width: 10%;
+  }  */
+
+  .slider-btn-wrapper {
+    /* padding-left: 10px; */
+    vertical-align: 15px;
+    width: 10%;
   }
   
   .slider-btn-left {
-    padding: 4px 4.5px 2px 3.5px;
+    /* padding: 4px 4.5px 2px 3.5px; */
   }
   
   .slider-btn-right {
-    padding: 4px 3.5px 1px 3.5px;
+    /* padding: 4px 3.5px 1px 3.5px; */
   }
   
   .slider-btn-left > .e-search:before {
     content:'\e921';
-    font-size: 15px;
   }
   
   .slider-btn-right > .e-search:before {
     content:'\e956';
-    font-size: 15px;
   }
   
   .e-slider-track {
@@ -144,16 +138,14 @@ section {
   
   .e-control.e-slider .e-handle {
     height: 25px;
-      width: 8px;
-      top: 4px;
-      border-radius: 15px;
-      background-color: black;
+    width: 8px;
+    top: 4px;
+    border-radius: 15px;
+    background-color: black;
   }
 
   .e-control-wrapper.e-slider-container.e-horizontal {
-    /* height: 48px; */
     width: 100%;
+    /* margin-left: 10px; */
   }
-  
-
   

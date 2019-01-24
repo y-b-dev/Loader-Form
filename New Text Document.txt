@@ -1,0 +1,4 @@
+git svn fetch-all https://github.com/y-b-dev/Starters/trunk/node-ts
+
+ng build --env=prod --prod=true --aot=true --sourcemap=false --output-hashing=all
+gulp purifyCSS

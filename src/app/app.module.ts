@@ -5,8 +5,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { SliderModule } from '@syncfusion/ej2-angular-inputs';
 
-import { AppComponent } from './app.component';
 import { OnlyNumber } from './only-numbers-directive';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [

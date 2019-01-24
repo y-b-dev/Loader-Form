@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+
 import { BalanceService } from './balance.service';
 import { BalanceModel } from './interfaces/balance-model';
 
@@ -16,12 +17,13 @@ export class AppComponent {
   private $formSub: Subscription;
   private $fetchDataSub: Subscription;
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f')
+  form: NgForm;
   data: BalanceModel;
-  isDesktop: boolean;
+  currency: string;
   sliderVal: number;
   maxVal: number; // Initial Main Balance
-  currency: string;
+  isDesktop: boolean;
   isNoFunds: boolean;
   isNoGameBalance: boolean;
 
@@ -29,11 +31,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(min-width: 500px)'])
+      .observe(['(min-width: 550px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.isDesktop = true;
-        } else {
+        }
+        else {
           this.isDesktop = false;
         }
       });
@@ -43,7 +46,6 @@ export class AppComponent {
     const { gameBalance, mainBalance } = data;
     this.currency = data.currency;
     this.maxVal = mainBalance + gameBalance;
-
     this.$formSub = this.form.valueChanges.subscribe(vals => {
       const maxVal = this.maxVal;
       let gameBalance = +vals.gameBalance;
@@ -70,14 +72,11 @@ export class AppComponent {
       this.data = { mainBalance, gameBalance };
     });
   }
-
   onSliderChange(e) {
-    console.log(e)
+    console.log(e);
     const { value } = e;
-    this.sliderVal = value;
-    this.data = { gameBalance: value, mainBalance: this.maxVal - value }
+    this.data = { gameBalance: value, mainBalance: this.maxVal - value };
   }
-
   genRandBal() {
     const maxVal = this.maxVal;
     const mainBalance = Math.floor((Math.random() * maxVal));
@@ -85,35 +84,40 @@ export class AppComponent {
     const isNoGameBalance = !Boolean(gameBalance);
     this.isNoGameBalance = isNoGameBalance;
     this.isNoFunds = isNoGameBalance && !Boolean(mainBalance);
-    this.sliderVal = gameBalance;
     this.data = { mainBalance, gameBalance };
     return false;
   }
-
+  isDisableLeftSliderBtn() {
+    return this.data.gameBalance === 0 || this.isNoFunds
+  }
+  isDisableRightSliderBtn() {
+    return this.data.gameBalance === this.maxVal || this.isNoFunds
+  }
   gameLaunch() {
     return false;
   }
-
   gameDeposit() {
     return false;
   }
-
   gameTransferFunds() {
     return false;
   }
-
   moveAllToMainBalance() {
+    this.data = {
+      mainBalance: this.maxVal,
+      gameBalance: 0
+    };
     return false;
   }
-
   moveAllToGameBalance() {
+    this.data = {
+      mainBalance: 0,
+      gameBalance: this.maxVal
+    };
     return false;
   }
-
   ngOnDestroy() {
     this.$formSub.unsubscribe();
     this.$fetchDataSub.unsubscribe();
   }
-
 }
-
